@@ -1,0 +1,30 @@
+schemaVersion: 2.0.0
+metadata:
+  name: python-thoth
+  version: 0.1.0
+starterProjects:
+  - name: thoth-cli-examples
+    git:
+      remotes:
+        origin: https://github.com/thoth-station/cli-examples
+components:
+  - name: app
+    container:
+      image: quay.io/thoth-station/s2i-thoth-ubi8-py38:latest
+      mountSources: true
+commands:
+  - id: install-dependencies
+    exec:
+      commandLine: pipenv install
+      group:
+        kind: build
+        isDefault: true
+      component: app
+  - id: run-app
+    exec:
+      commandLine: "python app.py"
+      workingDir: ${PROJECTS_ROOT}
+      component: app
+      group:
+        kind: run
+        isDefault: true

@@ -1,0 +1,6 @@
+name: python-thoth
+displayName: Python Thoth
+description: Python 3.8 Stack with Thoth Service integrated
+tags: ["Python", "pip", "thoth-station", "thoth"]
+projectType: "python"
+language: "python"
